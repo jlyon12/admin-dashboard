@@ -8,6 +8,12 @@ The primary goal of this project is to use CSS grid to create this layout.
 
 Currently this is only optimized for the desktop with large resolutions. I will be adding mobile responsiveness to this project and several features that utilize JavaScript.
 
+## Release Notes
+
+v1.1 - Add support for dark theme switcher.
+
+v1.0 - Initial release - optimized for high resolution desktop displays.
+
 ## Live Demo Link
 
 <a href="https://probableactions.github.io/admin-dashboard/">Check it out here!</a>

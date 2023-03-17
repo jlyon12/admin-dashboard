@@ -25,8 +25,29 @@
 	--clr-text-header: #282828;
 	--clr-text-link: #ffffff;
 	--clr-text-nav: #ffffff;
-	--clr-icon-card: #282828;
+	--clr-btn-primary: #4590cf;
+	--clr-btn-toggle-bg: #171b21;
+	--clr-btn-toggle-text: #ffffff;
+	--clr-icon: #282828;
 	--clr-icon-nav: #282828;
+}
+
+:root .darkmode {
+	--clr-primary: #171b21;
+	--clr-accent: #904ae6;
+	--clr-background-body: #0e1116;
+	--clr-background-card: #171b21;
+	--clr-background-header: #171b21;
+	--clr-text: #bebebe;
+	--clr-text-header: #ffffff;
+	--clr-text-link: #ffffff;
+	--clr-text-nav: #ffffff;
+	--clr-btn-primary: #904ae6;
+	--clr-btn-toggle-bg: #ffffff;
+	--clr-btn-toggle-text: #171b21;
+	--clr-icon-card: #ffffff;
+	--clr-icon: #904ae6;
+	--clr-icon-nav: #ffffff;
 }
 /* CSS Reset and defaults */
 
@@ -68,7 +89,6 @@ select {
 		"sidebar header"
 		"sidebar main"
 		"footer footer";
-	grid-template-columns: 1fr 6fr;
 }
 
 /* Aside -  Sidebar Styling */
@@ -82,8 +102,10 @@ select {
 	grid-area: sidebar;
 	grid-template-areas:
 		"logo"
-		"nav";
-	grid-template-rows: var(--logo-img-size) 1fr;
+		"nav"
+		"button";
+	/* "theme-btn"; */
+	grid-template-rows: var(--logo-img-size) 1fr min-content;
 	gap: 2rem;
 	background-color: var(--clr-primary);
 	color: var(--clr-text-nav);
@@ -113,6 +135,7 @@ select {
 
 .logo-container__sidebar svg {
 	height: var(--logo-img-size);
+	color: var(--clr-accent);
 }
 
 .main-nav {
@@ -120,11 +143,12 @@ select {
 	grid-area: nav;
 	grid-template-areas:
 		"group1"
-		"group2"
-		".";
-	gap: var(--sidebar-gap);
+		"group2";
+	align-content: start;
+	gap: calc(var(--sidebar-gap) * 4);
 	padding: var(--sidebar-padding);
 }
+
 .main-nav ul li {
 	display: grid;
 	grid-template-columns: var(--logo-img-size) 1fr;
@@ -136,15 +160,33 @@ select {
 .group1__main-nav {
 	display: grid;
 	grid-area: group1;
-	grid-template-rows: repeat(6, var(--nav-icon-size));
+	grid-template-rows: repeat(auto-fill, var(--nav-icon-size));
 	gap: var(--sidebar-gap);
 }
 
 .group2__main-nav {
 	display: grid;
 	grid-area: group2;
-	grid-template-rows: repeat(3, var(--nav-icon-size));
+	align-self: start;
+	grid-template-rows: repeat(auto-fill, var(--nav-icon-size));
 	gap: var(--sidebar-gap);
+}
+
+.toggle-btn svg {
+	color: var(--clr-btn-toggle-text);
+	height: var(--nav-icon-size);
+}
+.toggle-btn {
+	display: flex;
+	align-items: center;
+	gap: var(--sidebar-gap);
+	appearance: none;
+	justify-content: center;
+	border: transparent;
+	background-color: var(--clr-btn-toggle-bg);
+	color: var(--clr-btn-toggle-text);
+	padding: 0.5rem;
+	border-radius: 24px;
 }
 
 /* Header Styling */
@@ -159,14 +201,16 @@ select {
 		"search user"
 		"greeting buttons";
 	background-color: var(--clr-background-header);
+	color: var(--clr-text-header);
 	font-weight: var(--fw-bold);
 	padding: 0.5rem 2rem 1rem 2rem;
 }
-.header svg {
+.header-icon {
 	height: var(--header-icon-size);
+	color: var(--clr-icon);
 }
 
-.header svg:hover {
+.header-icon:hover {
 	background-color: var(--clr-accent);
 	color: var(--clr-background-header);
 	transform: scale(1.1);
@@ -189,6 +233,7 @@ select {
 	border: transparent;
 	border-radius: 24px;
 	background-color: var(--clr-background-body);
+	color: var(--clr-text-header);
 	height: 2rem;
 	width: 50vw;
 	padding-left: 1rem;
@@ -242,7 +287,7 @@ select {
 .buttons__header button {
 	appearance: none;
 	border: transparent;
-	background-color: var(--clr-primary);
+	background-color: var(--clr-btn-primary);
 	color: var(--clr-text-link);
 	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 	border-radius: 24px;
@@ -320,7 +365,7 @@ select {
 	border-left: 8px solid var(--clr-accent);
 }
 
-.card-icons svg:hover {
+.card-icon:hover {
 	background-color: var(--clr-accent);
 	color: var(--clr-background-card);
 	transform: scale(1.1);
@@ -332,7 +377,18 @@ select {
 	display: grid;
 	grid-template-columns: repeat(3, var(--card-icon-size));
 	justify-content: end;
+	align-items: end;
 	gap: var(--card-gap);
+	color: var(--clr-icon);
+}
+
+.card-icon:hover {
+	background-color: var(--clr-accent);
+	color: var(--clr-background-card);
+	transform: scale(1.1);
+	outline: 2px solid var(--clr-accent);
+	outline-offset: -0.5px;
+	border-radius: 50%;
 }
 
 /* Announcements Section Styling */
