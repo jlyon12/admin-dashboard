@@ -16,7 +16,7 @@ v1.0 - Initial release - optimized for high resolution desktop displays.
 
 ## Live Demo Link
 
-<a href="https://probableactions.github.io/admin-dashboard/">Check it out here!</a>
+<a href="https://jlyon12.github.io/admin-dashboard/">Check it out here!</a>
 
 ## Image Attributions
 
